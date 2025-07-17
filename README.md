@@ -1,7 +1,7 @@
-#🟠 Convolutional Neural Network Classification on FashionMNIST (PyTorch)
+# 🟠 Convolutional Neural Network Classification on FashionMNIST (PyTorch)
 This is my implementation of a convolutional neural network (CNN) for classifying grayscale images from the FashionMNIST dataset using PyTorch. It closely follows the workflow taught in "PyTorch for Deep Learning & Machine Learning – Full Course" by Daniel Bourke, adapted from earlier exercises like make_blobs to work with real image data.
 
-##The main purpose of this mini-project is to practice and understand:
+## The main purpose of this mini-project is to practice and understand:
 
 - Building CNN architectures from scratch in PyTorch
 - Managing model training and evaluation on image data
@@ -9,7 +9,7 @@ This is my implementation of a convolutional neural network (CNN) for classifyin
 - Saving and loading model weights
 - Making predictions and visualizing model performance on unseen data
 
-##🧠 Key Concepts Practiced
+## 🧠 Key Concepts Practiced
 
 - Loading and preparing FashionMNIST using torchvision.datasets
 - Building a multi-layer CNN using nn.Conv2d, nn.ReLU, and nn.MaxPool2d

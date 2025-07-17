@@ -1,5 +1,5 @@
 # 🟠 Convolutional Neural Network Classification on FashionMNIST (PyTorch)
-This is my implementation of a convolutional neural network (CNN) for classifying grayscale images from the FashionMNIST dataset using PyTorch. It closely follows the workflow taught in "PyTorch for Deep Learning & Machine Learning – Full Course" by Daniel Bourke.
+This is my implementation of a convolutional neural network (CNN) for classifying grayscale images from the FashionMNIST dataset using PyTorch. It closely follows the workflow taught in "PyTorch for Deep Learning & Machine Learning – Full Course" by Daniel Bourke. I started with only using multi-layer perceptrons (with nn.Linear) which only got me around 80% accuracy. After using nn.Conv2d and nn.MaxPool2d, and tweaking the optimizer, epoch, and number of hidden units, I was able to get up to 91.48% accuracy.
 
 ## The main purpose of this mini-project is to practice and understand:
 
@@ -19,4 +19,3 @@ This is my implementation of a convolutional neural network (CNN) for classifyin
 - Writing a reusable make_predictions() function for inference
 - Visualizing predictions using matplotlib in a 3x3 grid with colored labels
 
-I started analysing using only MLP (with nn.Linear) which only got me around 80% accuracy. After using nn.Conv2d and nn.MaxPool2d, and tweaking the optimizer, epoch, and number of hidden units, I was able to get up to 91.48% accuracy.

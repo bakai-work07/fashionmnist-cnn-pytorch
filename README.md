@@ -19,3 +19,4 @@ This is my implementation of a convolutional neural network (CNN) for classifyin
 - Writing a reusable make_predictions() function for inference
 - Visualizing predictions using matplotlib in a 3x3 grid with colored labels
 
+I started analysing using only MLP (with nn.Linear) which only got me around 80% accuracy. After using nn.Conv2d and nn.MaxPool2d, and tweaking the optimizer, epoch, and number of hidden units, I was able to get up to 91.48% accuracy.

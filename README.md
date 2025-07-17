@@ -1,5 +1,5 @@
 # 🟠 Convolutional Neural Network Classification on FashionMNIST (PyTorch)
-This is my implementation of a convolutional neural network (CNN) for classifying grayscale images from the FashionMNIST dataset using PyTorch. It closely follows the workflow taught in "PyTorch for Deep Learning & Machine Learning – Full Course" by Daniel Bourke, adapted from earlier exercises like make_blobs to work with real image data.
+This is my implementation of a convolutional neural network (CNN) for classifying grayscale images from the FashionMNIST dataset using PyTorch. It closely follows the workflow taught in "PyTorch for Deep Learning & Machine Learning – Full Course" by Daniel Bourke.
 
 ## The main purpose of this mini-project is to practice and understand:
 

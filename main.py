@@ -100,9 +100,9 @@ def train_and_save_model(model, train_dataloader, loss_fn, optimizer, epochs=5, 
     torch.save(model.state_dict(), model_path)
     print(f"Model saved in path: {model_path}")
 
-def load_and_evaluate(model_class, model_path, test_dataloader, loss_fn):
-    model = model_class(1, 32, 10).to(device)
+def load_and_evaluate(model, model_path, test_dataloader, loss_fn):
     model.load_state_dict(torch.load(model_path, map_location=device))
+    model.to(device)
     model.eval()
     test_loss, test_accuracy = 0, 0
     with torch.inference_mode():
@@ -130,8 +130,8 @@ if __name__ == '__main__':
     model_0 = FashionModelMNISTModelV0(1, 32, 10).to(device)
     optimizer = torch.optim.Adam(params=model_0.parameters(), lr=1e-3)
     loss_fn = nn.CrossEntropyLoss()
-    train_and_save_model(model_0, train_dataloader, loss_fn, optimizer)
-    load_and_evaluate(FashionModelMNISTModelV0, "fashion_model.pth", test_dataloader, loss_fn)
+    # train_and_save_model(model_0, train_dataloader, loss_fn, optimizer)
+    load_and_evaluate(model_0, "fashion_model.pth", test_dataloader, loss_fn)
 
     # Make predictions on random test samples
     test_samples = []
@@ -157,5 +157,3 @@ if __name__ == '__main__':
             plt.title(title_text, fontsize=10, c="r")  # red text if wrong
         plt.axis(False)
     plt.show()
-
-

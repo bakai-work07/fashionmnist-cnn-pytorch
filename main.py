@@ -7,6 +7,9 @@ from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 from timeit import default_timer as timer
 import random
+from torchmetrics import ConfusionMatrix
+from mlxtend.plotting import plot_confusion_matrix
+from tqdm.auto import tqdm
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -156,4 +159,32 @@ if __name__ == '__main__':
         else:
             plt.title(title_text, fontsize=10, c="r")  # red text if wrong
         plt.axis(False)
+
+    # Make full predictions with trained model
+    y_preds = []
+    model_0.eval()
+    with torch.inference_mode():
+        for X, y in tqdm(test_dataloader, desc="Making predictions"):
+            # Send data and targets to target device
+            X, y = X.to(device), y.to(device)
+            # Do the forward pass
+            y_logit = model_0(X)
+            # Turn predictions from logits -> prediction probabilities -> predictions labels
+            y_pred = torch.softmax(y_logit, dim=1).argmax(
+                dim=1)  # perform softmax on the "logits" dimension, not "batch" dimension (in this case we have
+                        # a batch size of 32, so can perform on dim=1)
+            # Put predictions on CPU for evaluation
+            y_preds.append(y_pred.cpu())
+    # Concatenate list of predictions into a tensor
+    y_pred_tensor = torch.cat(y_preds)
+
+    confmat = ConfusionMatrix(num_classes=len(class_names), task='multiclass')
+    confmat_tensor = confmat(preds=y_pred_tensor, target=test_data.targets)
+    
+    # Plot confusion matrix
+    fig, ax = plot_confusion_matrix(
+        conf_mat=confmat_tensor.numpy(),  # matplotlib likes working with NumPy
+        class_names=class_names,  # turn the row and column labels into class names
+        figsize=(10, 7)
+    )
     plt.show()
